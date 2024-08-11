@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bank Branches</title>
+</head>
+<body>
+<h1 th:text="${bankName} + ' Branches'"></h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>IFSC Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(branches)}">
+        <td colspan="3">No branches found for this bank.</td>
+    </tr>
+    <tr th:each="branch : ${branches}">
+        <td th:text="${branch.name}"></td>
+        <td th:text="${branch.address}"></td>
+        <td th:text="${branch.ifscCode}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
